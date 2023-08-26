@@ -1,4 +1,4 @@
-package com.nguyen.test4.data
+package com.nguyen.test4.data.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
