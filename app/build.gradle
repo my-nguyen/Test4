@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -14,6 +15,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "API_KEY", API_KEY)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,6 +32,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
+    }
+    buildFeatures {
+        buildConfig true
+    }
+    kapt {
+        correctErrorTypes true
     }
 }
 
@@ -61,12 +69,12 @@ dependencies {
     // InstantTaskExecutorRule
     androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
 
-    /*androidTestImplementation "junit:junit:4.13.2"
-    androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:2.12.1"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
-    androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
-    androidTestImplementation "com.google.truth:truth:1.1.4"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "org.mockito:mockito-core:4.11.0"*/
+    // retrofit
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Hilt
+    implementation 'com.google.dagger:hilt-android:2.44.2'
+    kapt 'com.google.dagger:hilt-android-compiler:2.44'
 }
