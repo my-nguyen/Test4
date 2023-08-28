@@ -7,19 +7,25 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.nguyen.test4.getOrAwaitValue
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Inject
+import javax.inject.Named
 
-// required; to tell JUnit tests to run in androidTest folder (instrumented test, run on Emulator)
-@RunWith(AndroidJUnit4::class)
 // optional and recommended
 @SmallTest
+@HiltAndroidTest
 class ShoppingDaoTest {
-    private lateinit var database: ShoppingDatabase
+    @Inject
+    @Named("test_db")
+    lateinit var database: ShoppingDatabase
+
     private lateinit var dao: ShoppingDao
 
     // InstantTaskExecutorRule is a JUnit Test Rule that swaps the background executor used by
@@ -27,14 +33,14 @@ class ShoppingDaoTest {
     // otherwise error: Cannot invoke observeForever on a background thread
     // from line 46 of getOrAwaitValue() when calling this.observeForever(observer)
     @get:Rule
-    var rule = InstantTaskExecutorRule()
+    var executorRule = InstantTaskExecutorRule()
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @Before
     fun setup() {
-        database = Room.inMemoryDatabaseBuilder(
-            ApplicationProvider.getApplicationContext(),
-            ShoppingDatabase::class.java
-        ).allowMainThreadQueries().build()
+        hiltRule.inject()
         dao = database.shoppingDao()
     }
 

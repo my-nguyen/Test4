@@ -17,7 +17,7 @@ android {
         versionName "1.0"
         buildConfigField("String", "API_KEY", API_KEY)
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.nguyen.test4.HiltTestRunner"
     }
 
     buildTypes {
@@ -88,4 +88,8 @@ dependencies {
 
     // Error: Module with the Main dispatcher had failed to initialize
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
+
+    // Hilt in tests
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.44"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.44"
 }
