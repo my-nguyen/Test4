@@ -65,9 +65,11 @@ dependencies {
 
     // assertThat()
     androidTestImplementation "com.google.truth:truth:1.1.4"
+    testImplementation "com.google.truth:truth:1.1.4"
 
     // InstantTaskExecutorRule
     androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
 
     // retrofit
     implementation 'com.google.code.gson:gson:2.9.0'
@@ -83,7 +85,7 @@ dependencies {
 
     // by viewModels()
     implementation 'androidx.fragment:fragment-ktx:1.6.1'
-    implementation "androidx.activity:activity-ktx:1.7.2"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.7.1'
+
+    // Error: Module with the Main dispatcher had failed to initialize
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
 }
