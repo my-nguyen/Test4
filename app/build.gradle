@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.nguyen.test4'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.nguyen.test4"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
         buildConfigField("String", "API_KEY", API_KEY)
@@ -77,4 +77,13 @@ dependencies {
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.44.2'
     kapt 'com.google.dagger:hilt-android-compiler:2.44'
+
+    // viewModelScope
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
+    // by viewModels()
+    implementation 'androidx.fragment:fragment-ktx:1.6.1'
+    implementation "androidx.activity:activity-ktx:1.7.2"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.1'
 }

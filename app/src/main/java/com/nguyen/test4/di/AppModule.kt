@@ -5,7 +5,10 @@ import androidx.room.Room
 import com.nguyen.test4.Constants.BASE_URL
 import com.nguyen.test4.Constants.DATABASE_NAME
 import com.nguyen.test4.data.remote.PixarBayService
+import com.nguyen.test4.data.room.ShoppingDao
 import com.nguyen.test4.data.room.ShoppingDatabase
+import com.nguyen.test4.repos.DefaultRepository
+import com.nguyen.test4.repos.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,4 +38,8 @@ object AppModule {
             .baseUrl(BASE_URL)
             .build()
             .create(PixarBayService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideRepository(dao: ShoppingDao, service: PixarBayService) = DefaultRepository(dao, service) as Repository
 }
