@@ -7,6 +7,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.nguyen.test4.getOrAwaitValue
+import com.nguyen.test4.launchFragmentInHiltContainer
+import com.nguyen.test4.ui.ShoppingFragment
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.test.runTest
@@ -47,6 +49,13 @@ class ShoppingDaoTest {
     @After
     fun teardown() {
         database.close()
+    }
+
+    @Test
+    fun testLaunchFragmentInHiltContainer() {
+        launchFragmentInHiltContainer<ShoppingFragment> {
+
+        }
     }
 
     // runBlocking/runTest is a way to run a coroutine on the main thread

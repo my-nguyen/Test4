@@ -1,0 +1,7 @@
+package com.nguyen.test4
+
+import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class HiltTestActivity : AppCompatActivity()
