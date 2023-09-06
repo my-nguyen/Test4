@@ -1,1 +1,7 @@
 source: https://github.com/philipplackner/ShoppingListTestingYT.git
+
+in branch 10, the test fails with error:
+Wanted but not invoked:
+navController.popBackStack();
+-> at com.nguyen.test4.ui.ImagePickFragmentTest.clickImage_popBackStackAndSetImageUrl(ImagePickFragmentTest.kt:62)
+Actually, there were zero interactions with this mock.

@@ -17,7 +17,7 @@ class AddItemFragment: Fragment(R.layout.fragment_add_item) {
         viewModel = ViewModelProvider(requireActivity())[ShoppingViewModel::class.java]
 
         val binding = FragmentAddItemBinding.bind(view)
-        binding.image.setOnClickListener {
+        binding.addImage.setOnClickListener {
             findNavController().navigate(AddItemFragmentDirections.actionAddItemFragmentToImagePickFragment())
         }
 

@@ -2,8 +2,11 @@ package com.nguyen.test4.di
 
 import android.content.Context
 import androidx.room.Room
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.nguyen.test4.Constants.BASE_URL
 import com.nguyen.test4.Constants.DATABASE_NAME
+import com.nguyen.test4.R
 import com.nguyen.test4.data.remote.PixarBayService
 import com.nguyen.test4.data.room.ShoppingDao
 import com.nguyen.test4.data.room.ShoppingDatabase
@@ -42,4 +45,12 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRepository(dao: ShoppingDao, service: PixarBayService) = DefaultRepository(dao, service) as Repository
+
+    @Singleton
+    @Provides
+    fun provideGlide(@ApplicationContext context: Context) =
+        Glide.with(context)
+            .setDefaultRequestOptions(
+                RequestOptions().placeholder(R.drawable.ic_image).error(R.drawable.ic_image)
+            )
 }
