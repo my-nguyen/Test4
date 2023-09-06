@@ -1,7 +1,6 @@
 package com.nguyen.test4.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.fragment.app.FragmentFactory
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.espresso.Espresso.onView
@@ -10,20 +9,20 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.MediumTest
 import com.google.common.truth.Truth.assertThat
+import com.nguyen.test4.R
+import com.nguyen.test4.adapters.ImagesAdapter
+import com.nguyen.test4.getOrAwaitValue
 import com.nguyen.test4.launchFragmentInHiltContainer
+import com.nguyen.test4.repos.FakeRepositoryAndroid
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.mock
-import javax.inject.Inject
-import com.nguyen.test4.R
-import com.nguyen.test4.adapters.ImagesAdapter
-import com.nguyen.test4.getOrAwaitValue
-import com.nguyen.test4.repos.FakeRepositoryAndroid
-import org.junit.Rule
 import org.mockito.Mockito.verify
+import javax.inject.Inject
 
 @HiltAndroidTest
 @MediumTest
